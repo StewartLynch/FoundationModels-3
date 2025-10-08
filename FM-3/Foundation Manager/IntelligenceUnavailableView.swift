@@ -1,7 +1,7 @@
 //
 //----------------------------------------------
-// Original project: TEST
-// by  Stewart Lynch on 2025-10-07
+// Original project: FM - 1
+// by  Stewart Lynch on 2025-08-31
 //
 // Follow me on Mastodon: https://iosdev.space/@StewartLynch
 // Follow me on Threads: https://www.threads.net/@stewartlynch
@@ -17,18 +17,23 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct IntelligenceUnavailableView: View {
+    @Environment(FoundationManager.self) var manager
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ContentUnavailableView {
+            Label("AI Not available", systemImage: "apple.intelligence")
+        } description: {
+            Text(manager.notAvailableReason)
+        } actions: {
+            Button("Try again") {
+                manager.checkIsAvailable()
+            }
+            .buttonStyle(.bordered)
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    IntelligenceUnavailableView()
+        .environment(FoundationManager())
 }

@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		BBCBD93D2E956D9F00F47EA6 /* TEST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEST.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBCBD93D2E956D9F00F47EA6 /* FM-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FM-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BBCBD93F2E956D9F00F47EA6 /* TEST */ = {
+		BBCBD93F2E956D9F00F47EA6 /* FM-3 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TEST;
+			path = "FM-3";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		BBCBD9342E956D9F00F47EA6 = {
 			isa = PBXGroup;
 			children = (
-				BBCBD93F2E956D9F00F47EA6 /* TEST */,
+				BBCBD93F2E956D9F00F47EA6 /* FM-3 */,
 				BBCBD93E2E956D9F00F47EA6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		BBCBD93E2E956D9F00F47EA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BBCBD93D2E956D9F00F47EA6 /* TEST.app */,
+				BBCBD93D2E956D9F00F47EA6 /* FM-3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BBCBD93C2E956D9F00F47EA6 /* TEST */ = {
+		BBCBD93C2E956D9F00F47EA6 /* FM-3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BBCBD9482E956DA000F47EA6 /* Build configuration list for PBXNativeTarget "TEST" */;
+			buildConfigurationList = BBCBD9482E956DA000F47EA6 /* Build configuration list for PBXNativeTarget "FM-3" */;
 			buildPhases = (
 				BBCBD9392E956D9F00F47EA6 /* Sources */,
 				BBCBD93A2E956D9F00F47EA6 /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BBCBD93F2E956D9F00F47EA6 /* TEST */,
+				BBCBD93F2E956D9F00F47EA6 /* FM-3 */,
 			);
-			name = TEST;
+			name = "FM-3";
 			packageProductDependencies = (
 			);
-			productName = TEST;
-			productReference = BBCBD93D2E956D9F00F47EA6 /* TEST.app */;
+			productName = "FM-3";
+			productReference = BBCBD93D2E956D9F00F47EA6 /* FM-3.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BBCBD9382E956D9F00F47EA6 /* Build configuration list for PBXProject "TEST" */;
+			buildConfigurationList = BBCBD9382E956D9F00F47EA6 /* Build configuration list for PBXProject "FM-3" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BBCBD93C2E956D9F00F47EA6 /* TEST */,
+				BBCBD93C2E956D9F00F47EA6 /* FM-3 */,
 			);
 		};
 /* End PBXProject section */
@@ -161,8 +161,8 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RKV4UP49S6;
+				"ENABLE_FM-3ABILITY" = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -259,22 +259,27 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.createchsol.TEST;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.createchsol.FM-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -291,29 +296,34 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.createchsol.TEST;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.createchsol.FM-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BBCBD9382E956D9F00F47EA6 /* Build configuration list for PBXProject "TEST" */ = {
+		BBCBD9382E956D9F00F47EA6 /* Build configuration list for PBXProject "FM-3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BBCBD9462E956DA000F47EA6 /* Debug */,
@@ -322,7 +332,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BBCBD9482E956DA000F47EA6 /* Build configuration list for PBXNativeTarget "TEST" */ = {
+		BBCBD9482E956DA000F47EA6 /* Build configuration list for PBXNativeTarget "FM-3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BBCBD9492E956DA000F47EA6 /* Debug */,

@@ -1,0 +1,107 @@
+{
+  "fill" : {
+    "automatic-gradient" : "display-p3:0.08721,0.92264,0.28847,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : "none"
+            }
+          ],
+          "glass" : false,
+          "image-name" : "f.square.png",
+          "name" : "f.square",
+          "position" : {
+            "scale" : 1.35,
+            "translation-in-points" : [
+              -182.8203125,
+              -275.46484375
+            ]
+          }
+        },
+        {
+          "image-name" : "3.circle.fill 2.png",
+          "name" : "3.circle.fill",
+          "position" : {
+            "scale" : 1.42,
+            "translation-in-points" : [
+              -238,
+              102
+            ]
+          }
+        },
+        {
+          "blend-mode" : "normal",
+          "fill-specializations" : [
+            {
+              "value" : {
+                "solid" : "srgb:1.00000,1.00000,1.00000,1.00000"
+              }
+            },
+            {
+              "appearance" : "dark",
+              "value" : "none"
+            }
+          ],
+          "glass" : false,
+          "hidden" : false,
+          "image-name" : "m.square.png",
+          "name" : "m.square",
+          "position" : {
+            "scale" : 1.35,
+            "translation-in-points" : [
+              183.64453125,
+              -278.95703125
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
+        {
+          "image-name" : "PNG image-4A09-972F-B7-0.png",
+          "name" : "PNG image-4A09-972F-B7-0",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -4.953125,
+              -21.93359375
+            ]
+          }
+        }
+      ],
+      "name" : "Group",
+      "position" : {
+        "scale" : 1.85,
+        "translation-in-points" : [
+          129.76171875,
+          191.03125
+        ]
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "squares" : "shared"
+  }
+}

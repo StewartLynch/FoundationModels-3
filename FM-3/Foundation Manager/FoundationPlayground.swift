@@ -1,7 +1,7 @@
 //
 //----------------------------------------------
-// Original project: TEST
-// by  Stewart Lynch on 2025-10-07
+// Original project: FM - 2
+// by  Stewart Lynch on 2025-08-31
 //
 // Follow me on Mastodon: https://iosdev.space/@StewartLynch
 // Follow me on Threads: https://www.threads.net/@stewartlynch
@@ -14,14 +14,25 @@
 //----------------------------------------------
 // Copyright © 2025 CreaTECH Solutions. All rights reserved.
 
+//
 
-import SwiftUI
+import Foundation
+import Playgrounds
+import FoundationModels
 
-@main
-struct TESTApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+#Playground("Basic") {
+    let session = LanguageModelSession()
+    let prompt = Prompt("What are the colors of the rainbow")
+    try await session.respond(to: prompt)
 }
+
+#Playground("Prompt Builder") {
+    let session = LanguageModelSession()
+    let prompt = Prompt {
+        "I want an exercise routine"
+        "I want it to focus on the lower back"
+        "I want it to be for 20 minutes."
+    }
+    try await session.respond(to: prompt)
+}
+
