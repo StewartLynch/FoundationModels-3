@@ -54,25 +54,29 @@ struct FitnessPal: View {
                     }
                 }
                 Text("Length: \(totalLength, format: .number.precision(.fractionLength(0))) minutes")
-                Button("Get exercises") {
-                    
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(session.isResponding)
-                ScrollView {
-                    Text(.init(responseContent))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding()
-                }
-                .background(.quinary)
-                .clipShape(.rect(cornerRadius: 20))
-                .overlay {
-                    if session.isResponding {
-                        VStack {
-                            Text("Getting Exercises")
-                            ProgressView()
+                if manager.isModelAvailable {
+                    Button("Get exercises") {
+                        
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(session.isResponding)
+                    ScrollView {
+                        Text(.init(responseContent))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .padding()
+                    }
+                    .background(.quinary)
+                    .clipShape(.rect(cornerRadius: 20))
+                    .overlay {
+                        if session.isResponding {
+                            VStack {
+                                Text("Getting Exercises")
+                                ProgressView()
+                            }
                         }
                     }
+                } else {
+                    IntelligenceUnavailableView()
                 }
             }
             .padding()
