@@ -1,6 +1,6 @@
 # Foundation Models - 3 Guided Generation
 
-![AppIcon128](Images/AppIcon128.png) This is the starter project for the video on Guided Generation with Foundation Models
+![AppIcon128](Images/AppIcon128.png) This is the completed source code for the video on Guided Generation with Foundation Models
 
 Release Date: November 2, 2025
 
