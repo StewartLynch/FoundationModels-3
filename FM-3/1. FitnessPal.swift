@@ -36,7 +36,7 @@ struct FitnessPal: View {
                         }
                     }
                 }
-                LabeledContent("Age Gtoup") {
+                LabeledContent("Age Group") {
                     Picker("Age Group", selection: $ageGroup) {
                         ForEach(AgeGoup.allCases) { group in
                             Text(group.label.capitalized)
