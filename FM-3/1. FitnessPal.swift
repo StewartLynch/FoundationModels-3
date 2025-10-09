@@ -24,8 +24,11 @@ struct FitnessPal: View {
     @State private var fitnessLevel:FitnessLevel = .intermediate
     @State private var ageGroup:AgeGoup = .senior
     @State private var totalLength: Double = 10
-    @State private var responseContent = ""
-    let session = LanguageModelSession()
+    @State private var exercises: [Exercise] = []
+    let session = LanguageModelSession(instructions: Instructions {
+        "You are an experienced trainer."
+        "Your specialty is dealing with existing injuries."
+    })
     var body: some View {
         NavigationStack {
             VStack {
@@ -36,7 +39,7 @@ struct FitnessPal: View {
                         }
                     }
                 }
-                LabeledContent("Age Gtoup") {
+                LabeledContent("Age Group") {
                     Picker("Age Group", selection: $ageGroup) {
                         ForEach(AgeGoup.allCases) { group in
                             Text(group.label.capitalized)
@@ -56,17 +59,32 @@ struct FitnessPal: View {
                 Text("Length: \(totalLength, format: .number.precision(.fractionLength(0))) minutes")
                 if manager.isModelAvailable {
                     Button("Get exercises") {
-                        
+                        guard manager.isModelAvailable else { return }
+                        exercises.removeAll()
+                        let prompt = Prompt {
+                            "Recommend some exercises for a total length of \(totalLength) minutes."
+                            "Your clients are in the age group \(ageGroup.rawValue)."
+                            "The fitness level should be \(fitnessLevel.rawValue)."
+                            "If the exercise requires holding position, make sure to indicate how long to hold each position."
+                        }
+                        Task {
+                            exercises = try await session.respond(to: prompt, generating: [Exercise].self).content
+                        }
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(session.isResponding)
-                    ScrollView {
-                        Text(.init(responseContent))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .padding()
+                    List {
+                        ForEach(exercises) { exercise in
+                            VStack(alignment: .leading) {
+                                Text(exercise.name).font(.title3.bold())
+                                Text(exercise.instructions)
+                                Text(exercise.benefits).foregroundStyle(.secondary)
+                                Text("\(exercise.repetitions) repetitions")
+                                Text("\(exercise.ageGroup.label) - \(exercise.fitness.rawValue)")
+                            }
+                        }
                     }
-                    .background(.quinary)
-                    .clipShape(.rect(cornerRadius: 20))
+                    .listStyle(.plain)
                     .overlay {
                         if session.isResponding {
                             VStack {
@@ -91,12 +109,13 @@ struct FitnessPal: View {
         .environment(NavManager())
 }
 
-
+@Generable
 enum FitnessLevel: String, CaseIterable, Identifiable {
     case beginner, intermediate, advanced
     var id: Self { self }
 }
 
+@Generable
 enum AgeGoup: String, CaseIterable, Identifiable {
     case teenager = "10 to 19 years old"
     case young = "between 20 and 40 years old"
@@ -116,4 +135,27 @@ enum AgeGoup: String, CaseIterable, Identifiable {
         }
     }
     var id: Self { self }
+}
+
+@Generable
+struct Exercise: Identifiable {
+    var id = UUID()
+    
+    @Guide(description: "The name of the exercise")
+    let name: String
+    
+    @Guide(description: "A short description on how to perform the exercise")
+    let instructions: String
+    
+    @Guide(description: "The benefits of performing the exercise")
+    let benefits: String
+    
+    @Guide(description: "The exercise should be specific to this fitness level")
+    let fitness: FitnessLevel
+    
+    @Guide(description: "The exerise should be appropriate for this age group")
+    let ageGroup: AgeGoup
+    
+    @Guide(description: "The number of repetitions", .range(1...10))
+    let repetitions: Int
 }

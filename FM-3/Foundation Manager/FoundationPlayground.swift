@@ -36,3 +36,14 @@ import FoundationModels
     try await session.respond(to: prompt)
 }
 
+#Playground("Guided Generation") {
+    let session = LanguageModelSession()
+    let prompt = Prompt {
+        "Recommend some exercises for a total length of 10 minutes."
+        "Your clients are in the age group over 65 years old."
+        "The fitness level should be intermediate."
+        "If the exercise requires holding position, make sure to indicate how long to hold each position."
+    }
+    
+    try await session.respond(to: prompt, generating: [Exercise].self)
+}

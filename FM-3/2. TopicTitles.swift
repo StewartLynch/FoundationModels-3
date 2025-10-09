@@ -18,9 +18,12 @@
 import SwiftUI
 import FoundationModels
 
-
+@Generable
 struct Topic {
+    @Guide(description: "The topic title")
     var title: String
+    
+    @Guide(description: "A subtitle or catch phrase for the topic")
     var catchPhrase: String
 }
 
@@ -29,9 +32,10 @@ struct TopicTitles: View {
     @Environment(FoundationManager.self) var manager
     @Environment(\.scenePhase) private var scenePhase
     @State private var topic: String = ""
-    @State private var topics: [Topic] = []
+    @State private var topics: [Topic].PartiallyGenerated = []
     @State private var number: Int = 10
-    let session = LanguageModelSession()
+    @State private var session = LanguageModelSession(instructions: "You are a creative marketing expert and your job is to generate creative titles and catch phrases for the topic specified.")
+    @State private var errorString: String?
     var body: some View {
         NavigationStack {
             VStack {
@@ -57,12 +61,52 @@ struct TopicTitles: View {
                 }
                 if manager.isModelAvailable {
                     Button("Generate Titles") {
-                        
+                        guard manager.isModelAvailable else { return }
+                        topics.removeAll()
+                        let prompt = "Create \(number) topics based on \(topic)"
+                        let stream = session.streamResponse(to: prompt, generating: [Topic].self)
+                        Task {
+                            do {
+                                for try await partialResponse in stream {
+                                    withAnimation {
+                                        topics = partialResponse.content
+                                    }
+                                }
+                            } catch let error as LanguageModelSession.GenerationError {
+                                switch error {
+                                case .guardrailViolation(let context):
+                                    errorString = "Guardrail Violation: \(context.debugDescription)"
+                                case .decodingFailure(let context):
+                                    errorString = "Decoding Failure: \(context.debugDescription)"
+                                case .rateLimited(let context):
+                                    errorString = "Rate Limit exceeded: \(context.debugDescription)"
+                                default:
+                                    errorString = "Other error: \(error.localizedDescription)"
+                                }
+                                if let failureReason = error.failureReason {
+                                    errorString! += "\n\(failureReason)"
+                                }
+                                if let recoverySuggestion = error.recoverySuggestion {
+                                    errorString! += "\n\(recoverySuggestion)"
+                                }
+                            
+                            } catch {
+                                errorString = error.localizedDescription
+                            }
+                        }
                     }
                     .buttonStyle(.glassProminent)
                     .disabled(session.isResponding || topic.isEmpty)
                     List {
-
+                        ForEach(topics) { topic in
+                            if let title = topic.title, let catchPhrase = topic.catchPhrase {
+                                VStack(alignment: .leading) {
+                                    Text(title).font(.title3.bold())
+                                    Text(catchPhrase).font(.subheadline)
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                }
+                            }
+                        }
 
                     }
                     .listStyle(.plain)
@@ -90,6 +134,17 @@ struct TopicTitles: View {
                     topics.removeAll()
                 }
             }
+            .alert("Prompt Error", isPresented: .constant(errorString != nil)) {
+                Button("OK") {
+                    errorString = nil
+                    topic = ""
+                }
+            } message: {
+                if let errorString {
+                    Text(errorString)
+                }
+            }
+
         }
     }
     
