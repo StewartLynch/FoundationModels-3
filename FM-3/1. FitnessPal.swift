@@ -25,7 +25,7 @@ struct FitnessPal: View {
     @State private var ageGroup:AgeGoup = .senior
     @State private var totalLength: Double = 10
     @State private var exercises: [Exercise] = []
-    let session = LanguageModelSession(instructions: Instructions {
+    @State private var session = LanguageModelSession(instructions: Instructions {
         "You are an experienced trainer."
         "Your specialty is dealing with existing injuries."
     })
