@@ -2,7 +2,9 @@
 
 ![AppIcon128](Images/AppIcon128.png) This is the starter project for the video on Guided Generation with Foundation Models
 
-Release Date: November 2, 2025
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=kBwwztRY1FQ
+" target="_blank"><img src="http://img.youtube.com/vi/kBwwztRY1FQ/0.jpg" 
+alt="Guided Generation" width="480" height="360" border="1" /></a>
 
 If you want to support my work, you can - </br>
 
